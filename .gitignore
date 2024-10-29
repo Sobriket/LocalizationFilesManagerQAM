@@ -3,5 +3,5 @@
 ################################################################################
 
 /LocalizationFilesManager/.vs/
-LocalizationFilesManager/LocalizationFilesManager/obj/project.nuget.cache
 /LocalizationFilesManager
+/LocalizationFilesManager/LocalizationFilesManager/obj
