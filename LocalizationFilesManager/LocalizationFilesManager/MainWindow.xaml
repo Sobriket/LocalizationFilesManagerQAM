@@ -8,15 +8,22 @@
         Title="Localization Files Manager" Height="400" Width="600">
     <Grid>
         <Menu VerticalAlignment="Top" Height="22">
-            <Button Content="File" Click="Button_Click"/>
-            <Button Content="Edit" Click="Button_Edit"/>
+            <MenuItem Header="File">
+                <MenuItem Header="New" Click="MenuItemNewClick"/>
+                <MenuItem Header="Open" Click="MenuItemOpenClick"/>
+                <MenuItem Header="Save" Click="MenuItemSaveClick"/>
+                <Separator/>
+                <MenuItem Header="Exit" Click="MenuItemExitClick"/>
+            </MenuItem>
+            
+            <Button Content="Edit"/>
         </Menu>
-        <DataGrid Name="dataGrid" Margin="0,22,0,0" VerticalAlignment="Top" >
+        <DataGrid Name="dataGrid" Margin="0,22,0,0" VerticalAlignment="Top" AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" MinWidth="80" Width = "*" CanUserReorder="False" />
-                <DataGridTextColumn Header="EN" MinWidth="80" Width = "*"/>
-                <DataGridTextColumn Header="FR" MinWidth="80" Width = "*"/>
-                <DataGridTextColumn Header="ES" MinWidth="80" Width = "*"/>
+                <DataGridTextColumn Header="ID" MinWidth="80" Width="*" CanUserReorder="False" Binding="{Binding ID}"/>
+                <DataGridTextColumn Header="EN" MinWidth="80" Width="*" Binding="{Binding EN}"/>
+                <DataGridTextColumn Header="FR" MinWidth="80" Width="*" Binding="{Binding FR}"/>
+                <DataGridTextColumn Header="ES" MinWidth="80" Width="*" Binding="{Binding ES}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
