@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Reflection;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -16,12 +17,12 @@ namespace LocalizationFilesManager
     /// </summary>
     public partial class MainWindow : Window
     {
-        public string[] Columns = { "Id", "en", "fr", "es", "comments" };
+        //public string[] Columns = { "Id", "en", "fr", "es", "comments" };
 
         public MainWindow()
         {
             InitializeComponent();
-
+            /*
             foreach (string column in Columns)
             {
                 //Exemple pour ajouter une colonne à la grille
@@ -37,6 +38,7 @@ namespace LocalizationFilesManager
                 //l'ajout'
                 dataGrid.Columns.Add(textColumn);
             }
+            */
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -46,11 +48,6 @@ namespace LocalizationFilesManager
         private void Button_Edit(object sender, RoutedEventArgs e)
         {
 
-        }
-
-        private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            
         }
     }
 }

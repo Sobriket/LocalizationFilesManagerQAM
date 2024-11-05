@@ -5,15 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LocalizationFilesManager"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Localization Files Manager" Height="400" Width="600">
     <Grid>
         <Menu VerticalAlignment="Top" Height="22">
             <Button Content="File" Click="Button_Click"/>
             <Button Content="Edit" Click="Button_Edit"/>
         </Menu>
-        <DataGrid Name="dataGrid" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,22,0,0" VerticalAlignment="Top" SelectionChanged="dataGrid_SelectionChanged" Grid.RowSpan="5">
+        <DataGrid Name="dataGrid" Margin="0,22,0,0" VerticalAlignment="Top" >
             <DataGrid.Columns>
-
+                <DataGridTextColumn Header="ID" MinWidth="80" Width = "*" CanUserReorder="False" />
+                <DataGridTextColumn Header="EN" MinWidth="80" Width = "*"/>
+                <DataGridTextColumn Header="FR" MinWidth="80" Width = "*"/>
+                <DataGridTextColumn Header="ES" MinWidth="80" Width = "*"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
