@@ -17,6 +17,7 @@
             </MenuItem>
             
             <Button Content="Edit"/>
+            <Button Content="Export CSV" Click="Button_ExportCsv"></Button>
         </Menu>
         <DataGrid Name="dataGrid" Margin="0,22,0,0" VerticalAlignment="Top" AutoGenerateColumns="False">
             <DataGrid.Columns>
