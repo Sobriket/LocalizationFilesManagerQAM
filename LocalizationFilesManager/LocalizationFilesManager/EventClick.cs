@@ -19,7 +19,7 @@ namespace LocalizationFilesManager
         }
         private void MenuItemExitClick(object sender, RoutedEventArgs e)
         {
-
+            System.Windows.Application.Current.Shutdown();
         }
     }
 }
