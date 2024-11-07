@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.IO;
+using System.Text.Json;
 
 namespace LocalizationFilesManager
 {
@@ -32,7 +33,12 @@ namespace LocalizationFilesManager
 
         private void LoadJson(string _filepath)
         {
+            List<DataLocalization> Data = new List<DataLocalization>();
 
+            string jsonString = File.ReadAllText(_filepath);
+            Data = JsonSerializer.Deserialize<List<DataLocalization>>(jsonString);
+
+            dataGrid.ItemsSource = Data;
         }
 
         private void LoadXML(string _filepath)
