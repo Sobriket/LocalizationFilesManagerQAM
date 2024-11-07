@@ -43,7 +43,14 @@ namespace LocalizationFilesManager
 
         private void LoadXML(string _filepath)
         {
+            System.Xml.Serialization.XmlSerializer xmlSerializer = new System.Xml.Serialization.XmlSerializer(typeof(List<DataLocalization>));
+            List<DataLocalization> data;
+            using (StreamReader wr = new StreamReader(_filepath))
+            {
+                data = (List<DataLocalization>)xmlSerializer.Deserialize(wr);
+            }
 
+            dataGrid.ItemsSource = data;
         }
 
         private void LoadCPP(string _filepath)
