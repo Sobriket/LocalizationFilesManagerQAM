@@ -18,20 +18,18 @@ namespace LocalizationFilesManager
             dataGrid.ItemsSource = Data;
         }
 
-        private void Button_ExportCsv(object sender, RoutedEventArgs e)
+        private void SaveCSV(string _filepath)
         {
-            var filepath = "test.csv";
             // Create the CSV file to which grid data will be exported.  
-            StreamWriter sw = new StreamWriter(new FileStream(filepath, FileMode.Create, FileAccess.Write));
+            StreamWriter sw = new StreamWriter(new FileStream(_filepath, FileMode.Create, FileAccess.Write));
 
             foreach (DataLocalization item in dataGrid.Items.OfType<DataLocalization>())
             {
-                sw.Write(item.ID +";" + item.EN + ";" + item.FR + ";" + item.ES);
+                sw.Write(item.ID + ";" + item.EN + ";" + item.FR + ";" + item.ES);
                 sw.Write(sw.NewLine);
             }
             sw.Close();
-
-            
         }
+
     }
 }
