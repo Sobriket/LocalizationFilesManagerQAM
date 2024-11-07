@@ -36,6 +36,12 @@ namespace LocalizationFilesManager
                     case ".csv":
                         SaveCSV(filename);
                         break;
+                    case ".json":
+                        SaveJson(filename);
+                        break;
+                    case ".xml":
+                        SaveXML(filename);
+                        break;
                     default:
                         MessageBox.Show("Extension non valide", "Erreur", MessageBoxButton.OK, MessageBoxImage.Warning);
                         break;
