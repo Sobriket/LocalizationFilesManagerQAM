@@ -1,9 +1,6 @@
-﻿using System;
-using System.IO;
-using System.Text.Json;
+﻿using System.IO;
 using System.Windows;
-using System.Windows.Controls;
-using System.Xml;
+using System.Text.Json;
 
 namespace LocalizationFilesManager
 {
@@ -27,13 +24,23 @@ namespace LocalizationFilesManager
             File.WriteAllText(_filepath, jsonString);
         }
 
-        private void SaveXML(string _filepath) 
+        private void SaveXML(string _filepath)
         {
             System.Xml.Serialization.XmlSerializer xmlSerializer = new System.Xml.Serialization.XmlSerializer(typeof(List<DataLocalization>));
             using (StreamWriter wr = new StreamWriter(_filepath))
             {
                 xmlSerializer.Serialize(wr, dataGrid.Items.OfType<DataLocalization>().ToList<DataLocalization>());
             }
+        }
+
+        private void SaveCPP(string _filepath)
+        {
+
+        }
+
+        private void SaveCS(string _filepath)
+        {
+
         }
     }
 }
