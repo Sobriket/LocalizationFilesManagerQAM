@@ -24,31 +24,39 @@ namespace LocalizationFilesManager
                 //Read the contents of the file into a stream
                 var fileStream = dialog.OpenFile();
 
-                switch (Path.GetExtension(dialog.FileName))
+                try
                 {
-                    case ".csv":
-                        m_extensionUsedBefor = 0;
-                        LoadCSV(filename);
-                        break;
-                    case ".xml":
-                        m_extensionUsedBefor = 1;
-                        LoadXML(filename);
-                        break;
-                    case ".json":
-                        m_extensionUsedBefor = 2;
-                        LoadJson(filename);
-                        break;
-                    case ".cs":
-                        m_extensionUsedBefor = 3;
-                        LoadCS(filename);
-                        break;
-                    case ".cpp":
-                        m_extensionUsedBefor = 4;
-                        LoadCPP(filename);
-                        break;
-                    default:
-                        MessageBox.Show("Extension non valide", "Erreur", MessageBoxButton.OK, MessageBoxImage.Warning);
-                        break;
+                    switch (Path.GetExtension(dialog.FileName))
+                    {
+                        case ".csv":
+                            m_extensionUsedBefor = 0;
+                            LoadCSV(filename);
+                            break;
+                        case ".xml":
+                            m_extensionUsedBefor = 1;
+                            LoadXML(filename);
+                            break;
+                        case ".json":
+                            m_extensionUsedBefor = 2;
+                            LoadJson(filename);
+                            break;
+                        case ".cs":
+                            m_extensionUsedBefor = 3;
+                            LoadCS(filename);
+                            break;
+                        case ".cpp":
+                            m_extensionUsedBefor = 4;
+                            LoadCPP(filename);
+                            break;
+                        default:
+                            MessageBox.Show("Extension non valide", "Erreur", MessageBoxButton.OK, MessageBoxImage.Warning);
+                            break;
+                    }
+                }
+                catch (Exception _e)
+                {
+                    MessageBox.Show(_e.Message);
+                    throw;
                 }
             }
         }
