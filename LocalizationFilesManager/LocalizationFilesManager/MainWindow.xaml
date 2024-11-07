@@ -16,7 +16,6 @@
                 <MenuItem Header="Exit" Click="MenuItemExitClick"/>
             </MenuItem>
 
-            <Button Content="Edit"/>
         </Menu>
         <DataGrid Name="dataGrid" Margin="0,22,0,0" VerticalAlignment="Top" AutoGenerateColumns="False">
             <DataGrid.Columns>

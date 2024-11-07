@@ -1,5 +1,4 @@
-﻿using Microsoft.Win32;
-using System.IO;
+﻿using System.IO;
 using System.Windows;
 
 namespace LocalizationFilesManager
@@ -8,7 +7,8 @@ namespace LocalizationFilesManager
     { 
         private void MenuItemNewClick(object sender, RoutedEventArgs e)
         {
-
+            List<DataLocalization> Data = new List<DataLocalization>();
+            dataGrid.ItemsSource = Data;
         }
 
         private void MenuItemOpenClick(object sender, RoutedEventArgs e)
@@ -101,7 +101,7 @@ namespace LocalizationFilesManager
 
         private void MenuItemExitClick(object sender, RoutedEventArgs e)
         {
-            System.Windows.Application.Current.Shutdown();
+            Application.Current.Shutdown();
         }
     }
 }

@@ -11,7 +11,6 @@ namespace LocalizationFilesManager
         {
             InitializeComponent();
             List<DataLocalization> Data = new List<DataLocalization>();
-            Data.Add(new DataLocalization() { ID = "START", EN = "Start", FR = "Commencer", ES = "" });
             dataGrid.ItemsSource = Data;
         }
     }
