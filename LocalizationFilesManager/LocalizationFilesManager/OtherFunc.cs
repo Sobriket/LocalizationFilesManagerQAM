@@ -1,4 +1,7 @@
-﻿using System.Windows;
+﻿using System.Data;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
 
 namespace LocalizationFilesManager
 {
@@ -31,5 +34,38 @@ namespace LocalizationFilesManager
 
             return allExtensions;
         }
+
+        private void AddNewLangage(string _header)
+        {
+            string header = _header.ToUpper();
+
+            Data.Columns.Add(header);
+            dataGrid.ItemsSource = Data.AsDataView();
+
+            /*
+             * 
+             * nik
+            foreach (DataLocalization item in dataGrid.Items.OfType<DataLocalization>())
+            {
+                item.strings.Add(header);
+            } 
+             
+            DataGridTextColumn newColumn = new DataGridTextColumn();
+            newColumn.Header = header;
+            newColumn.MinWidth = 160;
+            //newColumn.Binding = new Binding($"[{header}]");
+           
+           // newColumn.ClipboardContentBinding = new Binding(header);
+
+            dataGrid.Columns.Add(newColumn);
+            // dataGrid.DataContext = newColumn;
+
+            Binding bind = new Binding();
+
+            bind.Source = dataGrid.Columns;
+            dataGrid.SetBinding(DataGrid.ItemsSourceProperty, bind);
+            */
+        }
+
     }
 }

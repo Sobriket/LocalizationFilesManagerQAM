@@ -15,14 +15,10 @@
                 <Separator/>
                 <MenuItem Header="Exit" Click="MenuItemExitClick"/>
             </MenuItem>
-
+            <Button Click="Button_new_Langage">Add a new langage</Button>
         </Menu>
-        <DataGrid Name="dataGrid" Margin="0,22,0,0" VerticalAlignment="Top" AutoGenerateColumns="False">
+        <DataGrid Name="dataGrid" Margin="0,22,0,0" VerticalAlignment="Top" AutoGenerateColumns="True" AddingNewItem="dataGrid_AddingNewItem">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" MinWidth="80" Width="*" CanUserReorder="False" Binding="{Binding ID}"/>
-                <DataGridTextColumn Header="EN" MinWidth="80" Width="*" Binding="{Binding EN}"/>
-                <DataGridTextColumn Header="FR" MinWidth="80" Width="*" Binding="{Binding FR}"/>
-                <DataGridTextColumn Header="ES" MinWidth="80" Width="*" Binding="{Binding ES}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System.Windows;
 using System.Text.Json;
+using System.Data;
 
 namespace LocalizationFilesManager
 {
@@ -10,9 +11,21 @@ namespace LocalizationFilesManager
         {
             // Create the CSV file to which grid data will be exported.  
             StreamWriter sw = new StreamWriter(new FileStream(_filepath, FileMode.Create, FileAccess.Write));
-            foreach (DataLocalization item in dataGrid.Items.OfType<DataLocalization>())
+
+            for (int i = 0; i < dataGrid.Columns.Count; i++)
             {
-                sw.Write(item.ID + ";" + item.EN + ";" + item.FR + ";" + item.ES);
+                sw.Write(dataGrid.Columns[i].Header + ";");
+            }
+            sw.Write(sw.NewLine);
+
+
+            foreach (DataRow item in Data.Rows)
+            {
+                for (int i = 0; i < item.ItemArray.Length; i++)
+                {
+                    sw.Write(item.ItemArray[i].ToString() + ";");
+                }
+
                 sw.Write(sw.NewLine);
             }
             sw.Close();
@@ -20,16 +33,43 @@ namespace LocalizationFilesManager
 
         private void SaveJson(string _filepath)
         {
-            string jsonString = JsonSerializer.Serialize(dataGrid.Items.OfType<DataLocalization>());
+            string jsonString = "";
+            DataLocalization data = new();
+
+            for (int i = 0; i < Data.Rows.Count; i++)
+            {
+                data.strings.Clear();
+                for (int j = 0; j < Data.Columns.Count;j++)
+                {
+                    data.strings.Add(Data.Columns[j].ColumnName, Data.Rows[i].ItemArray[j].ToString());
+                }
+
+                jsonString += JsonSerializer.Serialize(data.strings);
+            }
+            
             File.WriteAllText(_filepath, jsonString);
         }
 
         private void SaveXML(string _filepath)
         {
+
             System.Xml.Serialization.XmlSerializer xmlSerializer = new System.Xml.Serialization.XmlSerializer(typeof(List<DataLocalization>));
             using (StreamWriter wr = new StreamWriter(_filepath))
             {
-                xmlSerializer.Serialize(wr, dataGrid.Items.OfType<DataLocalization>().ToList<DataLocalization>());
+
+                DataLocalization data = new();
+
+                for (int i = 0; i < Data.Rows.Count; i++)
+                {
+                    data.strings.Clear();
+                    for (int j = 0; j < Data.Columns.Count; j++)
+                    {
+                        data.strings.Add(Data.Columns[j].ColumnName, Data.Rows[i].ItemArray[j].ToString());
+                    }
+
+                    xmlSerializer.Serialize(wr,data.strings);
+                }
+
             }
         }
 
@@ -40,7 +80,31 @@ namespace LocalizationFilesManager
 
         private void SaveCS(string _filepath)
         {
+            StreamWriter sw = new StreamWriter(new FileStream(_filepath, FileMode.Create, FileAccess.Write));
 
+            sw.Write("namespace LocalizationFilesManager\n{\nenum Langage\n{\n");
+
+            for (int i = 1; i < dataGrid.Columns.Count; i++)
+            {
+                sw.WriteLine(dataGrid.Columns[i].Header);
+            }
+
+            sw.Write("COUNT\n};\npublic class Data\n{\npublic static Dictionary<String,String>[] files = new Dictionary<String,String>[(ushort)Langage.COUNT];\n");
+            sw.Write("public static void Init()\n{\n");
+
+            DataLocalization[] data = dataGrid.Items.OfType<DataLocalization>().ToArray<DataLocalization>();
+
+            for (int j = 0;j < dataGrid.Items.Count;j++)
+            {
+                for (int i = 1; i < dataGrid.Columns.Count; i++)
+                {
+                    //sw.Write("files[(ushort)Langage."+dataGrid.Columns[i]+ "].Add(\"" + data[j].strings[0] + "\",\"" + data[j].strings[i] + "\");\n");
+                }
+            }
+
+            sw.Write("\n}\n}\n}");
+
+            sw.Close();
         }
     }
 }

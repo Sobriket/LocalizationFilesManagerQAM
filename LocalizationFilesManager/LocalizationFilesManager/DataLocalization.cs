@@ -1,15 +1,22 @@
-﻿using System.Windows;
+﻿using System.Collections.ObjectModel;
+using System.Windows;
 
 namespace LocalizationFilesManager
 {
     partial class MainWindow : Window
     {
-        public class DataLocalization
+        public class DataLocalization //: ObservableCollection<String>
         {
-            public String ID { get; set; }
-            public String EN { get; set; }
-            public String FR { get; set; }
-            public String ES { get; set; }
+            public DataLocalization() 
+            {
+                strings = new();
+            }
+
+            public Dictionary<string, string> strings { get; set; }
+
+            //public List<String> strings { get; set; } = new List<String>();
+
+            //public List<Langage> LANGAGES { get; set; } = new List<string>();
         }
     }
 }

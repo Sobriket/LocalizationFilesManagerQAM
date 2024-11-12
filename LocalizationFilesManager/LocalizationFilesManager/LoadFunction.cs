@@ -21,10 +21,13 @@ namespace LocalizationFilesManager
                 {
                     read = data.Split(seperators, StringSplitOptions.None);
                     DataLocalization dataLocalization = new DataLocalization();
-                    dataLocalization.ID = read[0];
-                    dataLocalization.EN = read[1];
-                    dataLocalization.FR = read[2];
-                    dataLocalization.ES = read[3];
+                    //dataLocalization.strings[0] = read[0];
+                    int count = 1;
+                    while (read[count+1] != null)
+                    {
+                        //dataLocalization.strings[count] = (read[count+1]);
+                        count++;
+                    }
                     Data.Add(dataLocalization);
                 }
             }
@@ -51,6 +54,16 @@ namespace LocalizationFilesManager
             }
 
             dataGrid.ItemsSource = data;
+        }
+
+        private void LoadCPP(string _filepath)
+        {
+
+        }
+
+        private void LoadCS(string _filepath)
+        {
+
         }
     }
 }
