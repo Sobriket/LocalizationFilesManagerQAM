@@ -52,15 +52,5 @@ namespace LocalizationFilesManager
 
             dataGrid.ItemsSource = data;
         }
-
-        private void LoadCPP(string _filepath)
-        {
-
-        }
-
-        private void LoadCS(string _filepath)
-        {
-
-        }
     }
 }
