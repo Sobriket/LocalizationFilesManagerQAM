@@ -33,43 +33,38 @@ namespace LocalizationFilesManager
 
         private void SaveJson(string _filepath)
         {
-            string jsonString = "";
-            DataLocalization data = new();
+            Dictionary<string, string> data = new Dictionary<string, string>();
 
             for (int i = 0; i < Data.Rows.Count; i++)
             {
-                data.strings.Clear();
                 for (int j = 0; j < Data.Columns.Count;j++)
                 {
-                    data.strings.Add(Data.Columns[j].ColumnName, Data.Rows[i].ItemArray[j].ToString());
+                    data.Add(Data.Columns[j].ColumnName, Data.Rows[i].ItemArray[j].ToString());
                 }
-
-                jsonString += JsonSerializer.Serialize(data.strings);
             }
-            
+
+            string jsonString = JsonSerializer.Serialize(data);
             File.WriteAllText(_filepath, jsonString);
         }
 
         private void SaveXML(string _filepath)
         {
 
-            System.Xml.Serialization.XmlSerializer xmlSerializer = new System.Xml.Serialization.XmlSerializer(typeof(List<DataLocalization>));
+            System.Xml.Serialization.XmlSerializer xmlSerializer = new System.Xml.Serialization.XmlSerializer(typeof(Dictionary<string, string>));
             using (StreamWriter wr = new StreamWriter(_filepath))
             {
 
-                DataLocalization data = new();
+                Dictionary<string, string> data = new Dictionary<string, string>();
 
                 for (int i = 0; i < Data.Rows.Count; i++)
                 {
-                    data.strings.Clear();
                     for (int j = 0; j < Data.Columns.Count; j++)
                     {
-                        data.strings.Add(Data.Columns[j].ColumnName, Data.Rows[i].ItemArray[j].ToString());
+                        data.Add(Data.Columns[j].ColumnName, Data.Rows[i].ItemArray[j].ToString());
                     }
-
-                    xmlSerializer.Serialize(wr,data.strings);
                 }
 
+                xmlSerializer.Serialize(wr, data);
             }
         }
 

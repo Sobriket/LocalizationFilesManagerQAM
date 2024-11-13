@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using System.Reflection.PortableExecutable;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -65,6 +66,14 @@ namespace LocalizationFilesManager
             bind.Source = dataGrid.Columns;
             dataGrid.SetBinding(DataGrid.ItemsSourceProperty, bind);
             */
+        }
+
+        private void AddNewLangages(string[] _headers)
+        {
+            for (int i = 0; i < _headers.Length; i++)
+            {
+                AddNewLangage(_headers[i]);
+            }
         }
 
     }

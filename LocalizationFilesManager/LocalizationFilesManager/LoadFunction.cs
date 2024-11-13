@@ -10,28 +10,32 @@ namespace LocalizationFilesManager
         {
             string[] read;
             char seperators = ';';
+            Data.Columns.Clear();
 
-            List<DataLocalization> Data = new List<DataLocalization>();
             // Load the CSV file to which grid data will be imported.  
             using (StreamReader sr = new StreamReader(_filepath))
             {
-                string data;
-
-                while ((data = sr.ReadLine()) != null)
+                string dataReceived;
+                int countLine = 0;
+                
+                while ((dataReceived = sr.ReadLine()) != null)
                 {
-                    read = data.Split(seperators, StringSplitOptions.None);
-                    DataLocalization dataLocalization = new DataLocalization();
-                    //dataLocalization.strings[0] = read[0];
-                    int count = 1;
-                    while (read[count+1] != null)
+                    read = dataReceived.Split(seperators, StringSplitOptions.RemoveEmptyEntries);
+
+                    if (countLine == 0)
                     {
-                        //dataLocalization.strings[count] = (read[count+1]);
-                        count++;
+                        AddNewLangages(read);
                     }
-                    Data.Add(dataLocalization);
+                    else
+                    {
+                        Data.Rows.Add(read);
+                    }
+
+                    countLine++;
                 }
             }
-            dataGrid.ItemsSource = Data;
+
+            dataGrid.ItemsSource = Data.DefaultView;
         }
 
         private void LoadJson(string _filepath)
