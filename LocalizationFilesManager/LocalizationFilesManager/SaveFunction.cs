@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System.Windows;
 using System.Text.Json;
+
 using System.Data;
 
 namespace LocalizationFilesManager
@@ -50,17 +51,20 @@ namespace LocalizationFilesManager
         private void SaveXML(string _filepath)
         {
 
-            System.Xml.Serialization.XmlSerializer xmlSerializer = new System.Xml.Serialization.XmlSerializer(typeof(Dictionary<string, string>));
+            System.Xml.Serialization.XmlSerializer xmlSerializer = new System.Xml.Serialization.XmlSerializer(typeof(DataLocalization));
             using (StreamWriter wr = new StreamWriter(_filepath))
             {
 
-                Dictionary<string, string> data = new Dictionary<string, string>();
+                DataLocalization data = new DataLocalization();
 
-                for (int i = 0; i < Data.Rows.Count; i++)
+                for (int j = 0; j < Data.Columns.Count -1; j++)
                 {
-                    for (int j = 0; j < Data.Columns.Count; j++)
+                    data.Data.Add(new List<string>());
+                    data.Data[j].Add(Data.Columns[j+1].ColumnName);
+
+                    for (int i = 0; i < Data.Rows.Count; i++)
                     {
-                        data.Add(Data.Columns[j].ColumnName, Data.Rows[i].ItemArray[j].ToString());
+                        data.Data[j].Add(Data.Rows[i].ItemArray[j].ToString());
                     }
                 }
 

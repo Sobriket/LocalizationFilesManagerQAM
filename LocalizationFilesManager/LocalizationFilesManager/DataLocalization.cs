@@ -1,18 +1,21 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows;
+using System.Xml.Serialization;
 
 namespace LocalizationFilesManager
 {
     partial class MainWindow : Window
     {
+        [XmlRoot("DataLocalization")]
         public class DataLocalization
         {
             public DataLocalization() 
             {
-                strings = new Dictionary<string, string>();
+                
+                Data = new List<List<String>>();
             }
 
-            public Dictionary<string, string> strings { get; set; }
+            public List<List<String>> Data { get; set; }
         }
     }
 }
