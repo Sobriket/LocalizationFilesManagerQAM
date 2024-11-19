@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DataLocalization xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Data>
+    <ArrayOfString>
+      <string>ID</string>
+      <string>ID</string>
+      <string>PLAY</string>
+      <string>SETTINGS</string>
+      <string>QUIT</string>
+      <string>FRENCH</string>
+      <string>ENGLISH</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>FR</string>
+      <string>FR</string>
+      <string>JOUER</string>
+      <string>PARAMETRES</string>
+      <string>QUITTER</string>
+      <string>Français</string>
+      <string>Anglais</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>EN</string>
+      <string>EN</string>
+      <string>PLAY</string>
+      <string>SETTINGS</string>
+      <string>QUIT</string>
+      <string>French</string>
+      <string>English</string>
+    </ArrayOfString>
+  </Data>
+</DataLocalization>

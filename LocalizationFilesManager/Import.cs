@@ -31,21 +31,7 @@ public class Import : MonoBehaviour
         public List<List<String>> Data { get; set; }
     }
 
-    private void Start()
-    {
-        string extension = Path.GetExtension(path).ToLower();
-        if(extension == ".xml")
-        {
-            LoadXML(path);
-        }else if(extension == ".json")
-        {
-            LoadJson(path);
-        }else if(extension == ".csv")
-        {
-            LoadCSV(path);
-        }
-      
-    }
+   
 
     private void LoadJson(string _filepath)
     {
@@ -71,7 +57,7 @@ public class Import : MonoBehaviour
 
         int cultureID = 0;
         Debug.Log(culture);
-        //if(culture == CultureTypes.)
+     
     }
 
     private void LoadCSV(string _filepath)
@@ -107,15 +93,7 @@ public class Import : MonoBehaviour
                 data.Add(tempDictionary);
             }
 
-            //for (int i = 1; i < localizationData.Data[0].Count; i++)
-            //{
-            //    Dictionary<string, string> tempDictionary = new Dictionary<string, string>();
-            //    for (int j = 0; j < localizationData.Data.Count; j++)
-            //    {
-            //        tempDictionary.Add(localizationData.Data[j][0], localizationData.Data[j][i]);
-            //    }
-            //    data.Add(tempDictionary);
-            //}
+
         }
 
         foreach (var dic in data[0])
@@ -144,23 +122,7 @@ public class Import : MonoBehaviour
                 data.Add(tempDictionary);
             }
 
-            // for (int i = 0; i < localizationData.Data.Count; i++)
-            // {
-            //     AddNewLangage(localizationData.Data[i][0]);
-            // }
-
-            // for (int i = 0; i < localizationData.Data[0].Count; i++)
-            // {
-            //
-            //     string[] read = new string[localizationData.Data.Count];
-            //
-            //     for (int j = 0; j < localizationData.Data.Count; j++)
-            //     {
-            //         read[j] = localizationData.Data[j][i];
-            //     }
-            //
-            //     Data.Rows.Add(read);
-            // }
+           
 
         }
 
@@ -169,7 +131,7 @@ public class Import : MonoBehaviour
             languages.Add(dic.Key);
         }
         languages = languages.GetRange(1, languages.Count - 1);
-        // dataGrid.ItemsSource = Data.DefaultView;
+        
     }
 
     public static string GetText(string id)
