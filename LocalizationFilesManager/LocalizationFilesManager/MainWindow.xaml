@@ -18,7 +18,7 @@
             </MenuItem>
             <Button Click="Button_new_Langage">Add a new langage</Button>
         </Menu>
-        <DataGrid Name="dataGrid" Margin="0,22,0,0" VerticalAlignment="Top" AutoGenerateColumns="True" AddingNewItem="dataGrid_AddingNewItem">
+        <DataGrid Name="dataGrid" Margin="0,22,0,0" VerticalAlignment="Top" AutoGenerateColumns="True">
             <DataGrid.Columns>
 
             </DataGrid.Columns>

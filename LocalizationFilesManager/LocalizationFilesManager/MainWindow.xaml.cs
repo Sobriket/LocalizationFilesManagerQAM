@@ -13,6 +13,7 @@ namespace LocalizationFilesManager
         DataTable Data = new DataTable();
 
         public static RoutedCommand shortcutSave = new RoutedCommand();
+        public static RoutedCommand shortcutLoad = new RoutedCommand();
 
         public MainWindow()
         {
@@ -27,11 +28,6 @@ namespace LocalizationFilesManager
             dataGrid.ColumnWidth = new DataGridLength(100,DataGridLengthUnitType.Star);
 
             dataGrid.ItemsSource = Data.DefaultView;
-        }
-
-        private void dataGrid_AddingNewItem(object sender, System.Windows.Controls.AddingNewItemEventArgs e)
-        {
-           
         }
 
         private void Button_new_Langage(object sender, RoutedEventArgs e)
