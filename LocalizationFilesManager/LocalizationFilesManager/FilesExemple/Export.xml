@@ -29,5 +29,12 @@
       <string>オプション</string>
       <string>よす</string>
     </ArrayOfString>
+    <ArrayOfString>
+      <string>ES</string>
+      <string>Comenzar</string>
+      <string>Tablas de clasificación</string>
+      <string>Opciones</string>
+      <string>Abandonar</string>
+    </ArrayOfString>
   </Data>
 </DataLocalization>

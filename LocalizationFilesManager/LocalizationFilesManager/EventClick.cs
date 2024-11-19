@@ -40,14 +40,6 @@ namespace LocalizationFilesManager
                             m_extensionUsedBefor = 2;
                             LoadJson(filename);
                             break;
-                        case ".cs":
-                            m_extensionUsedBefor = 3;
-                            LoadCS(filename);
-                            break;
-                        case ".cpp":
-                            m_extensionUsedBefor = 4;
-                            LoadCPP(filename);
-                            break;
                         default:
                             MessageBox.Show("Extension non valide", "Erreur", MessageBoxButton.OK, MessageBoxImage.Warning);
                             break;
@@ -96,7 +88,7 @@ namespace LocalizationFilesManager
                         m_extensionUsedBefor = 3;
                         SaveCS(filename);
                         break;
-                    case ".cpp":
+                    case ".h":
                         m_extensionUsedBefor = 4;
                         SaveCPP(filename);
                         break;

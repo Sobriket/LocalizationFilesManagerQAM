@@ -76,6 +76,35 @@ namespace LocalizationFilesManager
         private void SaveCPP(string _filepath)
         {
 
+            string filePathCpp = _filepath.Remove(_filepath.Length - 1) + "cpp";
+
+            StreamWriter sw = new StreamWriter(new FileStream(_filepath, FileMode.Create, FileAccess.Write));
+
+            sw.Write("#ifndef LOCALIZATION_FILES_MANAGER_H\r\n\r\n#define LOCALIZATION_FILES_MANAGER_H\r\n#include <map>\r\n#include <string>\r\n\r\nnamespace LocalizationFilesManager\r\n{\r\n    enum class Langage\r\n    {\n");
+
+            for (int i = 1; i < Data.Columns.Count; i++)
+            {
+                sw.WriteLine(dataGrid.Columns[i].Header + ",");
+            }
+
+            sw.Write("COUNT\r\n    };\r\n\r\n    class Data\r\n    {\r\n    public:\r\n        Data();\r\n        std::map<std::string, std::string>* m_files;\r\n    };\r\n\t\r\n}\r\n\r\n#endif // !LOCALIZATION_FILES_MANAGER_H");
+            sw.Close();
+
+            sw = new StreamWriter(new FileStream(filePathCpp, FileMode.Create, FileAccess.Write));
+
+            sw.Write("#include \"" + Path.GetFileName(_filepath) + "\"\r\n\r\nusing namespace LocalizationFilesManager;\r\n\r\nLocalizationFilesManager::Data::Data()\r\n{\r\n\tm_files = new std::map<std::string, std::string>[(unsigned short)Langage::COUNT];\r\n");
+
+            for (int i = 1; i < Data.Columns.Count; i++)
+            {
+                for (int j = 1; j < Data.Rows.Count; j++)
+                {
+                    sw.Write("m_files[(unsigned short)Langage::" + dataGrid.Columns[i].Header + "][\"" + Data.Rows[j].ItemArray[0].ToString() + "\"] = \"" + Data.Rows[j].ItemArray[i].ToString() + "\";\n");
+                }
+            }
+
+            sw.Write("}");
+
+            sw.Close();
         }
 
         private void SaveCS(string _filepath)
@@ -84,7 +113,7 @@ namespace LocalizationFilesManager
 
             sw.Write("namespace LocalizationFilesManager\n{\nenum Langage\n{\n");
 
-            for (int i = 1; i < dataGrid.Columns.Count; i++)
+            for (int i = 1; i < Data.Columns.Count; i++)
             {
                 sw.WriteLine(dataGrid.Columns[i].Header + ",");
             }
@@ -94,7 +123,7 @@ namespace LocalizationFilesManager
 
             for (int u = 1; u < dataGrid.Columns.Count; u++)
             {
-                for (int j = 0; j < Data.Rows.Count; j++)
+                for (int j = 1; j < Data.Rows.Count; j++)
                 {
                     sw.Write("files[(ushort)Langage." + dataGrid.Columns[u].Header + "].Add(\"" + Data.Rows[j].ItemArray[0].ToString() + "\",\"" + Data.Rows[j].ItemArray[u].ToString() + "\");\n");
                 }
