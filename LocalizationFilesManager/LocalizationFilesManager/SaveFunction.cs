@@ -73,10 +73,10 @@ namespace LocalizationFilesManager
             }
         }
 
-        private void SaveCPP(string _filepath)
+        private void SaveHpp(string _filepath)
         {
 
-            string filePathCpp = _filepath.Remove(_filepath.Length - 1) + "cpp";
+            string filePathCpp = _filepath.Remove(_filepath.Length - 3) + "cpp";
 
             StreamWriter sw = new StreamWriter(new FileStream(_filepath, FileMode.Create, FileAccess.Write));
 

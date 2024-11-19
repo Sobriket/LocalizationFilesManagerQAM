@@ -1,7 +1,6 @@
 ﻿using System.Windows;
 using System.IO;
 using System.Text.Json;
-using System.Data;
 
 namespace LocalizationFilesManager
 {

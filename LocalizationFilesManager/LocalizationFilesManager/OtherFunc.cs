@@ -15,7 +15,7 @@ namespace LocalizationFilesManager
             "XML |*.xml",
             "JSON |*.json",
             "C# |*.cs",
-            "CPP |.*cpp"
+            "hpp |*.hpp"
         };
 
         private string GetExtensions()
@@ -42,30 +42,6 @@ namespace LocalizationFilesManager
 
             Data.Columns.Add(header);
             dataGrid.ItemsSource = Data.AsDataView();
-
-            /*
-             * 
-             * nik
-            foreach (DataLocalization item in dataGrid.Items.OfType<DataLocalization>())
-            {
-                item.strings.Add(header);
-            } 
-             
-            DataGridTextColumn newColumn = new DataGridTextColumn();
-            newColumn.Header = header;
-            newColumn.MinWidth = 160;
-            //newColumn.Binding = new Binding($"[{header}]");
-           
-           // newColumn.ClipboardContentBinding = new Binding(header);
-
-            dataGrid.Columns.Add(newColumn);
-            // dataGrid.DataContext = newColumn;
-
-            Binding bind = new Binding();
-
-            bind.Source = dataGrid.Columns;
-            dataGrid.SetBinding(DataGrid.ItemsSourceProperty, bind);
-            */
         }
 
         private void AddNewLangages(string[] _headers)

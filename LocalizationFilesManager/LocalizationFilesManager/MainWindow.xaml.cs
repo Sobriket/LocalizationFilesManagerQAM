@@ -18,7 +18,8 @@ namespace LocalizationFilesManager
             InitializeComponent();
 
             Data.Columns.Clear();
-            Data.Columns.Add("ID");
+            DataColumn column = Data.Columns.Add("ID");
+            dataGrid.ColumnWidth = new DataGridLength(100,DataGridLengthUnitType.Star);
 
             dataGrid.ItemsSource = Data.DefaultView;
         }

@@ -88,9 +88,9 @@ namespace LocalizationFilesManager
                         m_extensionUsedBefor = 3;
                         SaveCS(filename);
                         break;
-                    case ".h":
+                    case ".hpp":
                         m_extensionUsedBefor = 4;
-                        SaveCPP(filename);
+                        SaveHpp(filename);
                         break;
                     default:
                         MessageBox.Show("Extension non valide", "Erreur", MessageBoxButton.OK, MessageBoxImage.Warning);
