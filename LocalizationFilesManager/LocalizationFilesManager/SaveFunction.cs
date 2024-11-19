@@ -34,13 +34,14 @@ namespace LocalizationFilesManager
 
         private void SaveJson(string _filepath)
         {
-            Dictionary<string, string> data = new Dictionary<string, string>();
+            List<Dictionary<string, string>> data = new List<Dictionary<string, string>>();
 
             for (int i = 0; i < Data.Rows.Count; i++)
             {
-                for (int j = 0; j < Data.Columns.Count;j++)
+                data.Add(new Dictionary<string, string>());
+                for (int j = 0; j < Data.Columns.Count; j++)
                 {
-                    data.Add(Data.Columns[j].ColumnName, Data.Rows[i].ItemArray[j].ToString());
+                    data[i].Add(Data.Columns[j].ColumnName, Data.Rows[i].ItemArray[j].ToString());
                 }
             }
 
@@ -91,13 +92,12 @@ namespace LocalizationFilesManager
             sw.Write("COUNT\n};\npublic class Data\n{\npublic static Dictionary<String,String>[] files = new Dictionary<String,String>[(ushort)Langage.COUNT];\n");
             sw.Write("public static void Init()\n{\n");
 
-            DataLocalization[] data = dataGrid.Items.OfType<DataLocalization>().ToArray<DataLocalization>();
-
+ 
             for (int j = 0;j < dataGrid.Items.Count;j++)
             {
                 for (int i = 1; i < dataGrid.Columns.Count; i++)
                 {
-                    //sw.Write("files[(ushort)Langage."+dataGrid.Columns[i]+ "].Add(\"" + data[j].strings[0] + "\",\"" + data[j].strings[i] + "\");\n");
+                    //sw.Write("files[(ushort)Langage."+dataGrid.Columns[i]+ "].Add(\"" + data[j] + "\",\"" + data[j].strings[i] + "\");\n");
                 }
             }
 
