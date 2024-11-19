@@ -1,9 +1,6 @@
 ﻿using System.Data;
-using System.Data.Common;
-using System.Reflection.PortableExecutable;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Input;
 
 namespace LocalizationFilesManager
