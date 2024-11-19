@@ -11,7 +11,6 @@ namespace LocalizationFilesManager
         {
             public DataLocalization() 
             {
-                
                 Data = new List<List<String>>();
             }
 

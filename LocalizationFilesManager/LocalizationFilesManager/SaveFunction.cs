@@ -58,10 +58,10 @@ namespace LocalizationFilesManager
 
                 DataLocalization data = new DataLocalization();
 
-                for (int j = 0; j < Data.Columns.Count -1; j++)
+                for (int j = 0; j < Data.Columns.Count; j++)
                 {
                     data.Data.Add(new List<string>());
-                    data.Data[j].Add(Data.Columns[j+1].ColumnName);
+                    data.Data[j].Add(Data.Columns[j].ColumnName);
 
                     for (int i = 0; i < Data.Rows.Count; i++)
                     {
@@ -86,23 +86,21 @@ namespace LocalizationFilesManager
 
             for (int i = 1; i < dataGrid.Columns.Count; i++)
             {
-                sw.WriteLine(dataGrid.Columns[i].Header);
+                sw.WriteLine(dataGrid.Columns[i].Header + ",");
             }
 
             sw.Write("COUNT\n};\npublic class Data\n{\npublic static Dictionary<String,String>[] files = new Dictionary<String,String>[(ushort)Langage.COUNT];\n");
-            sw.Write("public static void Init()\n{\n");
+            sw.Write("public static void Init()\n{\nfor (int i = 0; i < (ushort)Langage.COUNT; i++)\r\n            {\r\n                files[i] = new Dictionary<string, string>();\r\n            }");
 
- 
-            for (int j = 0;j < dataGrid.Items.Count;j++)
+            for (int u = 1; u < dataGrid.Columns.Count; u++)
             {
-                for (int i = 1; i < dataGrid.Columns.Count; i++)
+                for (int j = 0; j < Data.Rows.Count; j++)
                 {
-                    //sw.Write("files[(ushort)Langage."+dataGrid.Columns[i]+ "].Add(\"" + data[j] + "\",\"" + data[j].strings[i] + "\");\n");
+                    sw.Write("files[(ushort)Langage." + dataGrid.Columns[u].Header + "].Add(\"" + Data.Rows[j].ItemArray[0].ToString() + "\",\"" + Data.Rows[j].ItemArray[u].ToString() + "\");\n");
                 }
             }
 
             sw.Write("\n}\n}\n}");
-
             sw.Close();
         }
     }

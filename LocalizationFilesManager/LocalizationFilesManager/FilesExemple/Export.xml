@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DataLocalization xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Data>
+    <ArrayOfString>
+      <string>ID</string>
+      <string>Start</string>
+      <string>Leaderboards</string>
+      <string>Options</string>
+      <string>Quit</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>EN</string>
+      <string>Start</string>
+      <string>Leaderboards</string>
+      <string>Options</string>
+      <string>Quit</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>FR</string>
+      <string>Démarrer</string>
+      <string>Classements</string>
+      <string>Options</string>
+      <string>Quitter</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>JA</string>
+      <string>開始</string>
+      <string>リーダーボード”</string>
+      <string>オプション</string>
+      <string>よす</string>
+    </ArrayOfString>
+  </Data>
+</DataLocalization>

@@ -76,5 +76,12 @@ namespace LocalizationFilesManager
             }
         }
 
+        private void ClearData()
+        {
+            Data.Columns.Clear();
+            Data.Rows.Clear();
+            Data.Clear();
+        }
+
     }
 }

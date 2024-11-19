@@ -7,8 +7,8 @@ namespace LocalizationFilesManager
     { 
         private void MenuItemNewClick(object sender, RoutedEventArgs e)
         {
-            List<DataLocalization> Data = new List<DataLocalization>();
-            dataGrid.ItemsSource = Data;
+            ClearData();
+            dataGrid.ItemsSource = Data.DefaultView;
         }
 
         private void MenuItemOpenClick(object sender, RoutedEventArgs e)
