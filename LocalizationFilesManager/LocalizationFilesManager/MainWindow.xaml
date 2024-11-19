@@ -20,7 +20,7 @@
         </Menu>
         <DataGrid Name="dataGrid" Margin="0,22,0,0" VerticalAlignment="Top" AutoGenerateColumns="True" AddingNewItem="dataGrid_AddingNewItem">
             <DataGrid.Columns>
-                
+
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
