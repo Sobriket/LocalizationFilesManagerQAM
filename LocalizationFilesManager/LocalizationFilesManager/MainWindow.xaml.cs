@@ -38,5 +38,7 @@ namespace LocalizationFilesManager
                 AddNewLangage(dialogBox.Answer);
             }
         }
+
+        
     }
 }

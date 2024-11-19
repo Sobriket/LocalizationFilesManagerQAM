@@ -12,6 +12,7 @@
                 <MenuItem Header="New" Click="MenuItemNewClick"/>
                 <MenuItem Header="Open" Click="MenuItemOpenClick"/>
                 <MenuItem Header="Save" Click="MenuItemSaveClick"/>
+                <MenuItem Header="Export" Click="MenuItemExportClick"/>
                 <Separator/>
                 <MenuItem Header="Exit" Click="MenuItemExitClick"/>
             </MenuItem>

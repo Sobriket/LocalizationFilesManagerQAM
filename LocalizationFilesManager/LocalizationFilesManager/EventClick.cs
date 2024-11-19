@@ -4,7 +4,7 @@ using System.Windows;
 namespace LocalizationFilesManager
 {
     public partial class MainWindow : Window
-    { 
+    {
         private void MenuItemNewClick(object sender, RoutedEventArgs e)
         {
             ClearData();
@@ -14,8 +14,8 @@ namespace LocalizationFilesManager
         private void MenuItemOpenClick(object sender, RoutedEventArgs e)
         {
             var dialog = new Microsoft.Win32.OpenFileDialog(); //configure open file dialog box
-            dialog.FileName = "Import";
-            dialog.Filter = GetExtensions();
+            dialog.FileName = "Load";
+            dialog.Filter = GetExtensionsLoadSave();
 
             if (dialog.ShowDialog() == true)
             {
@@ -57,9 +57,9 @@ namespace LocalizationFilesManager
         {
             // Configure save file dialog box
             var dialog = new Microsoft.Win32.SaveFileDialog();
-            dialog.FileName = "Export"; // Default file name
-            
-            dialog.Filter = GetExtensions(); // Filter files by extension
+            dialog.FileName = "Save"; // Default file name
+
+            dialog.Filter = GetExtensionsLoadSave(); // Filter files by extension
 
             // Show save file dialog box
             bool? result = dialog.ShowDialog();
@@ -90,6 +90,37 @@ namespace LocalizationFilesManager
                         break;
                     case ".hpp":
                         m_extensionUsedBefor = 4;
+                        SaveHpp(filename);
+                        break;
+                    default:
+                        MessageBox.Show("Extension non valide", "Erreur", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        break;
+                }
+            }
+        }
+
+        private void MenuItemExportClick(object sender, RoutedEventArgs e)
+        {
+            // Configure save file dialog box
+            var dialog = new Microsoft.Win32.SaveFileDialog();
+            dialog.FileName = "Export"; // Default file name
+
+            dialog.Filter = GetExtensionsExport(); // Filter files by extension
+
+            // Show save file dialog box
+            bool? result = dialog.ShowDialog();
+
+            if (result == true)
+            {
+                // Save document
+                string filename = dialog.FileName;
+
+                switch (Path.GetExtension(dialog.FileName))
+                {
+                    case ".cs":
+                        SaveCS(filename);
+                        break;
+                    case ".hpp":
                         SaveHpp(filename);
                         break;
                     default:
