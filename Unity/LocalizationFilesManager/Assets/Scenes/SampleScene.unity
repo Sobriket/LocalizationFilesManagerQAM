@@ -849,7 +849,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2d373a52e4462e4594a6e08eea798f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  path: C:\Users\Etudiant1\Desktop\ToolsTD\Export.json
+  path: Assets/Export.json
 --- !u!4 &754994596
 Transform:
   m_ObjectHideFlags: 0
