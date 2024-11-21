@@ -96,7 +96,7 @@ namespace LocalizationFilesManager
 
             for (int i = 1; i < Data.Columns.Count; i++)
             {
-                for (int j = 1; j < Data.Rows.Count; j++)
+                for (int j = 0; j < Data.Rows.Count; j++)
                 {
                     sw.Write("m_files[(unsigned short)Langage::" + dataGrid.Columns[i].Header + "][\"" + Data.Rows[j].ItemArray[0].ToString() + "\"] = \"" + Data.Rows[j].ItemArray[i].ToString() + "\";\n");
                 }
@@ -123,7 +123,7 @@ namespace LocalizationFilesManager
 
             for (int u = 1; u < dataGrid.Columns.Count; u++)
             {
-                for (int j = 1; j < Data.Rows.Count; j++)
+                for (int j = 0; j < Data.Rows.Count; j++)
                 {
                     sw.Write("files[(ushort)Langage." + dataGrid.Columns[u].Header + "].Add(\"" + Data.Rows[j].ItemArray[0].ToString() + "\",\"" + Data.Rows[j].ItemArray[u].ToString() + "\");\n");
                 }
